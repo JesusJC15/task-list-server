@@ -1,0 +1,26 @@
+{
+  "name": "task-list-server",
+  "version": "1.0.0",
+  "description": "Integrated Project: Express",
+  "keywords": [],
+  "homepage": "https://github.com/JesusJC15/task-list-server#readme",
+  "bugs": {
+    "url": "https://github.com/JesusJC15/task-list-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusJC15/task-list-server.git"
+  },
+  "license": "ISC",
+  "author": "Jesus Alberto Jauregui Conde",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {}
+}
