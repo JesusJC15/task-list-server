@@ -3,31 +3,26 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// Lista de tareas
-const tasks = [
-  {
-    id: 123456,
-    isCompleted: false,
-    description: "Walk the dog"
-  },
-  {
-    id: 789012,
-    isCompleted: true,
-    description: "Do homework"
-  },
-  {
-    id: 345678,
-    isCompleted: false,
-    description: "Read a book"
-  }
+app.use(express.json()); // Para leer JSON del body
+
+// Base de datos simulada en memoria
+let tasks = [
+  { id: 1, isCompleted: false, description: "Walk the dog" },
+  { id: 2, isCompleted: true, description: "Do homework" },
+  { id: 3, isCompleted: false, description: "Read a book" }
 ];
 
-// Ruta principal
-app.get('/tasks', (req, res) => {
-  res.json(tasks);
-});
+// Exportamos tasks para que los routers puedan usarla
+app.locals.tasks = tasks;
 
-// Iniciar servidor
+// Importar routers
+const listViewRouter = require('./list-view-router');
+const listEditRouter = require('./list-edit-router');
+
+// Usar routers
+app.use('/tasks', listViewRouter);
+app.use('/tasks', listEditRouter);
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
