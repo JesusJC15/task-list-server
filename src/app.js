@@ -19,6 +19,18 @@ app.locals.tasks = tasks;
 const listViewRouter = require('./list-view-router');
 const listEditRouter = require('./list-edit-router');
 
+// Métodos permitidos
+const allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+
+app.use((req, res, next) => {
+  if (!allowedMethods.includes(req.method)) {
+    return res.status(400).json({
+      message: "HTTP method not allowed"
+    });
+  }
+  next();
+});
+
 // Usar routers
 app.use('/tasks', listViewRouter);
 app.use('/tasks', listEditRouter);
